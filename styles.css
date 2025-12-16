@@ -146,9 +146,7 @@ hr {
 }
 
 .medal-card:hover {
-    transform: translateY(-3px); /* Эффект при наведении */
-    /* Убираем сильную тень, чтобы не мешала общему стилю */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); 
+    transform: translateY(-2px);
 }
 
 .medal-icon {
