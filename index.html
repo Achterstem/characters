@@ -40,71 +40,39 @@
 
                 <hr>
 
-<hr>
-
                 <h2>🏅 Медали и Награды</h2>
 
-                <div class="medals-compact-container">
-                    
-                    <div class="medal-item" 
+                <div class="medals-container">
+                    <div class="medal-card" 
+                         data-title="Звезда Героя" 
                          data-id="STAR-HERO-001" 
                          data-description="Награждена за спасение экипажа 'Одиссей' от вторжения драккаров в зоне бета-4.">
-                        <img src="medal_star.png" alt="Звезда Героя">
+                        <img src="medal_star.png" alt="Звезда Героя" class="medal-icon">
+                        <h3>Звезда Героя</h3>
                     </div>
 
-                    <div class="medal-item" 
+                    <div class="medal-card" 
+                         data-title="Знак Отличия Навигатора" 
                          data-id="NAV-MARK-045" 
                          data-description="Присуждается за исключительное мастерство в прокладывании маршрутов через аномальные гравитационные поля.">
-                        <img src="medal_navigator.png" alt="Знак Отличия">
+                        <img src="medal_navigator.png" alt="Знак Отличия" class="medal-icon">
+                        <h3>Знак Отличия Навигатора</h3>
                     </div>
                     
                     </div>
-
-                <div id="medalModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close-button">&times;</span>
-                        <p class="modal-id">ID: </p>
-                        <p class="modal-description">Описание: </p>
-                    </div>
-                </div>
-
             </section>
         </main>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const medals = document.querySelectorAll('.medal-item');
-            const modal = document.getElementById('medalModal');
-            const closeButton = document.querySelector('.close-button');
-            const modalContent = document.querySelector('.modal-content');
-            const modalId = document.querySelector('.modal-id');
-            const modalDescription = document.querySelector('.modal-description');
+    <div id="medalModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p><strong>ID:</strong> <span id="modalId"></span></p>
+            <p><strong>Описание:</strong> <span id="modalDescription"></span></p>
+        </div>
+    </div>
 
-            // 1. Открытие модального окна
-            medals.forEach(medal => {
-                medal.addEventListener('click', (e) => {
-                    const id = medal.getAttribute('data-id');
-                    const description = medal.getAttribute('data-description');
-
-                    modalId.textContent = 'ID: ' + id;
-                    modalDescription.textContent = 'Описание: ' + description;
-                    modal.style.display = 'flex'; // Показываем модальное окно
-                });
-            });
-
-            // 2. Закрытие по крестику
-            closeButton.addEventListener('click', () => {
-                modal.style.display = 'none';
-            });
-
-            // 3. Закрытие по клику вне плашки
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
