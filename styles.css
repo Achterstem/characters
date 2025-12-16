@@ -44,8 +44,8 @@ body {
 .sidebar h2 {
     color: #b6b6b6;
     border-bottom: 2px solid var(--border-color);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .sidebar ul {
