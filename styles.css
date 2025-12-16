@@ -248,41 +248,25 @@ hr {
     margin: 0;
 }
 
-/* 1. a:link - Ссылка, которую еще не посещали (исходный цвет) */
-a:link {
-    color: #a2483e;
-    text-decoration: none;
+/* Общий стиль для всех внешних ссылок (начинающихся с http) в блоке контента */
+.content a[href^="http"] {
+    /* Базовый цвет для внешних ссылок, которые еще не посещали */
+    color: #4CAF50; /* Например, зеленый */
+    text-decoration: underline; /* Чтобы они выделялись */
 }
 
-/* 2. a:visited - Ссылка, которую уже посетили */
-a:visited {
-    color: #a2483e;
-    text-decoration: none;
+/* Цвет внешних ссылок, которые пользователь уже посетил */
+.content a[href^="http"]:visited {
+    color: #81c784; /* Более светлый оттенок зеленого */
 }
 
-/* 3. a:hover - Ссылка при наведении курсора */
-a:hover {
-    color: #a88f8c; 
-    text-decoration: underline; 
+/* Цвет внешних ссылок при наведении курсора */
+.content a[href^="http"]:hover {
+    color: #388e3c; /* Более темный оттенок зеленого при наведении */
+    text-decoration: none; /* Убираем подчеркивание при наведении */
 }
 
-/* 4. a:active - Ссылка в момент клика */
-a:active {
-    color: #423f3e;
-    text-decoration: underline;
-}
-
-/* Стили для ссылок внутри бокового меню */
-.sidebar nav ul li a {
-    color: #252526;
-}
-
-/* Ссылка в боковом меню при наведении */
-.sidebar nav ul li a:hover {
-    color: #e7e7e7;
-}
-
-/* Выделение активного (выбранного) пункта меню */
-.sidebar nav ul li.active a {
-    color: #252526;
+/* Цвет внешних ссылок в момент нажатия */
+.content a[href^="http"]:active {
+    color: #ff5722; /* Яркий оранжевый */
 }
