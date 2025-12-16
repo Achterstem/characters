@@ -33,7 +33,7 @@ body {
 }
 
 .sidebar h2 {
-    color: #ffffff;
+    color: #b6b6b6;
     border-bottom: 2px solid var(--border-color);
     padding-bottom: 10px;
     margin-bottom: 20px;
@@ -109,7 +109,7 @@ body {
 }
 
 .content h2 {
-    color: #ffffff;
+    color: #b6b6b6;
     padding-left: 10px;
     margin-top: 0;
 }
