@@ -24,12 +24,12 @@ body {
 
 .container {
     display: flex;
-    min-height: 300vh;
+    min-height: 200vh;
 }
 
 /* Боковое меню */
 .sidebar {
-    width: 300px;
+    width: 200px;
     flex-shrink: 0;
     flex-grow: 0;
     background-color: rgba(37, 37, 38, 0.5);
