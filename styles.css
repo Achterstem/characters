@@ -120,35 +120,95 @@ hr {
     margin: 30px 0;
 }
 
-/* Секция медалей */
+/* Секция медалей: 3 в ряд */
 .medals-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: flex-start; /* Начинаем слева */
 }
 
 .medal-card {
     background-color: #2c2c2c;
     padding: 15px;
     border-radius: 6px;
-    width: calc(50% - 30px); /* Две карточки в ряд */
+    width: calc(33.33% - 13.33px); /* 3 в ряд (20px gap / 3 = 6.66px * 2 = 13.33px) */
     border: 1px solid var(--border-color);
+    text-align: center;
+    cursor: pointer; /* Делаем кликабельным */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.medal-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
 }
 
 .medal-icon {
-    width: 30px;
-    height: 30px;
-    float: left;
-    margin-right: 10px;
+    width: 64px; /* Фиксированный размер для чистых картинок */
+    height: 64px;
+    display: block;
+    margin: 10px auto;
+    object-fit: contain; /* Сохраняет пропорции, не обрезая */
 }
 
 .medal-card h3 {
     color: var(--text-accent);
     margin-top: 0;
-    margin-bottom: 5px;
+    font-size: 1.1em;
 }
 
-/* Адаптивность для узких экранов */
+/* Стили для МОДАЛЬНОГО ОКНА */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Фиксированное положение */
+    z-index: 1000; /* Поверх всего */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.85); /* Полупрозрачный темный фон */
+}
+
+.modal-content {
+    background-color: var(--bg-light);
+    margin: 10% auto; /* Отступ сверху и по центру */
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.9);
+    position: relative;
+}
+
+.modal-content h2 {
+    color: var(--text-accent);
+    border-left: none;
+}
+
+.close-button {
+    color: var(--text-primary);
+    float: right;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #ff4444; /* Красный при наведении */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .medal-card {
+        width: calc(50% - 10px); /* 2 в ряд */
+    }
+}
 @media (max-width: 800px) {
     .container {
         flex-direction: column;
@@ -162,98 +222,6 @@ hr {
         grid-template-columns: 1fr;
     }
     .medal-card {
-        width: 100%;
+        width: 100%; /* 1 в ряд */
     }
-}
-
-/* --- СТИЛИ ДЛЯ КОМПАКТНОГО СПИСКА МЕДАЛЕЙ (Новые) --- */
-
-.medals-compact-container {
-    /* Используем CSS Grid для выравнивания */
-    display: grid; 
-    /* Создаем 23 колонки, каждая минимального размера */
-    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); 
-    gap: 10px; /* Расстояние между медалями */
-    padding: 10px 0;
-}
-
-.medal-item {
-    cursor: pointer;
-    transition: transform 0.2s, opacity 0.2s;
-    /* Убеждаемся, что изображение внутри не выходит за пределы */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px; /* Небольшой отступ вокруг изображения */
-}
-
-.medal-item:hover {
-    opacity: 0.8;
-    transform: scale(1.1); /* Легкая анимация при наведении */
-}
-
-.medal-item img {
-    /* Сохранение оригинального размера изображения */
-    max-width: 100%; 
-    height: auto; 
-    display: block;
-    /* Если изображение очень большое, это его ограничит. 
-       Убедитесь, что ваши файлы наград небольшие (например, 32x32px или 48x48px). */
-}
-
-
-/* --- СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА (Плашки) --- */
-
-.modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed; /* Фиксированное положение */
-    z-index: 100; /* Поверх всего */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный фон для затемнения */
-    justify-content: center; /* Центрирование содержимого */
-    align-items: center; /* Центрирование содержимого */
-}
-
-.modal-content {
-    background-color: #2c2c2c;
-    color: var(--text-primary);
-    padding: 25px;
-    border: 1px solid var(--text-accent);
-    border-radius: 8px;
-    width: 80%;
-    max-width: 400px; /* Максимальная ширина плашки */
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-}
-
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    line-height: 1;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: #fff;
-    text-decoration: none;
-}
-
-.modal-id {
-    color: var(--text-accent);
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.modal-description {
-    margin: 0;
 }
