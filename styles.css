@@ -165,3 +165,95 @@ hr {
         width: 100%;
     }
 }
+
+/* --- СТИЛИ ДЛЯ КОМПАКТНОГО СПИСКА МЕДАЛЕЙ (Новые) --- */
+
+.medals-compact-container {
+    /* Используем CSS Grid для выравнивания */
+    display: grid; 
+    /* Создаем 23 колонки, каждая минимального размера */
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); 
+    gap: 10px; /* Расстояние между медалями */
+    padding: 10px 0;
+}
+
+.medal-item {
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    /* Убеждаемся, что изображение внутри не выходит за пределы */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px; /* Небольшой отступ вокруг изображения */
+}
+
+.medal-item:hover {
+    opacity: 0.8;
+    transform: scale(1.1); /* Легкая анимация при наведении */
+}
+
+.medal-item img {
+    /* Сохранение оригинального размера изображения */
+    max-width: 100%; 
+    height: auto; 
+    display: block;
+    /* Если изображение очень большое, это его ограничит. 
+       Убедитесь, что ваши файлы наград небольшие (например, 32x32px или 48x48px). */
+}
+
+
+/* --- СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА (Плашки) --- */
+
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Фиксированное положение */
+    z-index: 100; /* Поверх всего */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный фон для затемнения */
+    justify-content: center; /* Центрирование содержимого */
+    align-items: center; /* Центрирование содержимого */
+}
+
+.modal-content {
+    background-color: #2c2c2c;
+    color: var(--text-primary);
+    padding: 25px;
+    border: 1px solid var(--text-accent);
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px; /* Максимальная ширина плашки */
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.modal-id {
+    color: var(--text-accent);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.modal-description {
+    margin: 0;
+}
