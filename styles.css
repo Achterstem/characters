@@ -241,6 +241,9 @@ hr {
     font-size: 1.1em;
 }
 
+.content p {
+    padding-left: 20px;
+}
 .chain-info p {
     margin: 0;
 }
