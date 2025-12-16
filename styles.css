@@ -76,27 +76,32 @@ body {
 
 .header-section {
     display: flex;
-    align-items: center;
+    /* Убираем align-items: center;, чтобы текст мог идти вниз */
     margin-bottom: 30px;
+    flex-direction: column; /* Размещаем элементы вертикально */
+}
+
+.header-section h1 {
+    color: var(--text-accent);
+    margin: 0;
+    font-size: 2.2em;
+    margin-top: 10px; /* Добавим небольшой отступ сверху */
 }
 
 .avatar {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    margin-right: 20px;
+    /* Убираем margin-right, так как элементы теперь в колонке */
+    margin-bottom: 20px; 
     border: 3px solid var(--text-accent);
-}
-
-.content h1 {
-    color: var(--text-accent);
-    margin: 0;
-    font-size: 2.2em;
 }
 
 .id-info {
     color: #a0a0a0;
-    margin-left: 20px;
+    /* Убираем margin-left */
+    margin-left: 0; 
+    margin-top: 5px; /* Немного отделим от заголовка */
     font-size: 0.9em;
 }
 
