@@ -32,7 +32,6 @@ body {
     width: 250px;
     background-color: rgba(37, 37, 38, 0.5);
     padding: 20px;
-    border-right: 1px solid var(--border-color);
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
 }
 
