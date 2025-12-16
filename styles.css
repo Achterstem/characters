@@ -109,7 +109,6 @@ body {
 
 .content h2 {
     color: #ffffff;
-    border-left: 4px solid var(--text-accent);
     padding-left: 10px;
     margin-top: 0;
 }
