@@ -1,13 +1,11 @@
-/* Переменные для цветов */
 :root {
-    --bg-dark: #1e1e1e; /* Темный фон */
-    --bg-light: #252526; /* Светлее для блоков/сайдбара */
-    --text-primary: #7c7c7c; /* Основной текст */
-    --text-accent: #bebebe; /* Акцентный цвет (синий/бирюзовый) */
+    --bg-dark: #1e1e1e;
+    --bg-light: #252526;
+    --text-primary: #7c7c7c;
+    --text-accent: #bebebe;
     --border-color: #383838;
 }
 
-/* Общие стили */
 body {
     font-family: Arial, sans-serif;
     font-family: 'Pangolin', cursive;
@@ -110,7 +108,7 @@ body {
 
 .info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Две колонки */
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
     margin-bottom: 30px;
 }
@@ -126,28 +124,22 @@ hr {
     margin: 30px 0;
 }
 
-/* Секция медалей: Оформление как на картинке */
 .medals-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 0px; /* Убрали gap между медалями */
+    gap: 0px;
     justify-content: flex-start;
-    padding: 10px 0; /* Небольшой отступ сверху/снизу */
+    padding: 10px 0;
 }
 
 .medal-card {
-    /* Стили для имитации изображения: */
-    background: none; /* Убираем фон */
-    padding: 0px; /* Убираем внутренние отступы */
-    border: none; /* Убираем рамку */
-    margin: 0 5px; /* Небольшой внешний отступ между медалями */
-    
-    /* Сохраняем функциональность: */
+    background: none;
+    padding: 0px;
+    border: none;
+    margin: 0 5px; 
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s;
-    
-    /* Делаем блок компактным, чтобы картинки были рядом */
     width: auto; 
     max-width: 100px;
 }
@@ -157,23 +149,19 @@ hr {
 }
 
 .medal-icon {
-    /* Важно: размер зависит от ваших фактических картинок. 
-       Если они большие, уменьшите max-width и height. */
     max-width: 100%; 
     height: auto;
     display: block;
-    margin: 0; /* Убираем margin, чтобы были вплотную */
+    margin: 0;
     object-fit: contain; 
 }
 
-/* Скрываем текст под медалью, т.к. его видно в модальном окне */
 .medal-card h3,
 .medal-card p {
     display: none; 
 }
 
 
-/* Стили для МОДАЛЬНОГО ОКНА (остаются прежними) */
 .modal {
     display: none; 
     position: fixed; 
@@ -218,7 +206,6 @@ hr {
     cursor: pointer;
 }
 
-/* Адаптивность для узких экранов */
 @media (max-width: 800px) {
     .container {
         flex-direction: column;
