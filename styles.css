@@ -247,3 +247,50 @@ hr {
 .chain-info p {
     margin: 0;
 }
+
+/* 1. a:link - Ссылка, которую еще не посещали (исходный цвет) */
+a:link {
+    color: #007bff; /* Ярко-синий */
+    text-decoration: none;
+}
+
+/* 2. a:visited - Ссылка, которую уже посетили */
+a:visited {
+    color: #6c757d; /* Серый */
+    text-decoration: none;
+}
+
+/* 3. a:hover - Ссылка при наведении курсора */
+a:hover {
+    color: #ffc107; /* Желтый */
+    /* Добавление подчеркивания при наведении (для обратной связи) */
+    text-decoration: underline; 
+}
+
+/* 4. a:active - Ссылка в момент клика */
+a:active {
+    color: #dc3545; /* Красный */
+    text-decoration: underline;
+}
+
+/* Стили для ссылок внутри бокового меню */
+.sidebar nav ul li a {
+    color: #333; /* Исходный цвет в меню - темно-серый */
+    display: block; /* Ссылка занимает всю ширину элемента списка */
+    text-decoration: none;
+    padding: 8px 0;
+}
+
+/* Ссылка в боковом меню при наведении */
+.sidebar nav ul li a:hover {
+    color: #000; /* Черный при наведении */
+    text-decoration: none;
+    background-color: #f8f9fa; /* Добавить легкий фон */
+}
+
+/* Выделение активного (выбранного) пункта меню */
+.sidebar nav ul li.active a {
+    color: #17a2b8; /* Например, бирюзовый для активного элемента */
+    font-weight: bold;
+    background-color: #e9ecef; /* Более темный фон для выделения */
+}
