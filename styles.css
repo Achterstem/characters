@@ -30,7 +30,7 @@ body {
 /* Боковое меню */
 .sidebar {
     width: 250px;
-    background-color: rgba(37, 37, 38, 0.8);
+    background-color: rgba(37, 37, 38, 0.5);
     padding: 20px;
     border-right: 1px solid var(--border-color);
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
@@ -73,7 +73,7 @@ body {
 }
 
 .profile-card {
-    background-color: rgba(37, 37, 38, 0.8);
+    background-color: rgba(37, 37, 38, 0.5);
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
