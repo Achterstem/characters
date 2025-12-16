@@ -236,10 +236,9 @@ hr {
     }
 }
 
-/* Новый стиль для цепи имен под аватаркой */
 .chain-info {
-    padding: 10px 0 20px 0; /* Отступ */
-    border-bottom: 1px solid var(--border-color); /* Разделитель */
+    padding: 10px 0 20px 0;
+    border-bottom: 1px solid var(--border-color);
     margin-bottom: 20px;
     font-size: 1.1em;
 }
@@ -248,25 +247,21 @@ hr {
     margin: 0;
 }
 
-/* Общий стиль для всех внешних ссылок (начинающихся с http) в блоке контента */
 .content a[href^="http"] {
-    /* Базовый цвет для внешних ссылок, которые еще не посещали */
-    color: #4CAF50; /* Например, зеленый */
-    text-decoration: underline; /* Чтобы они выделялись */
+    color: #964949;
+    text-decoration: underline;
 }
 
-/* Цвет внешних ссылок, которые пользователь уже посетил */
 .content a[href^="http"]:visited {
-    color: #81c784; /* Более светлый оттенок зеленого */
+    color: #964949;
+    text-decoration: underline;
 }
 
-/* Цвет внешних ссылок при наведении курсора */
 .content a[href^="http"]:hover {
-    color: #388e3c; /* Более темный оттенок зеленого при наведении */
-    text-decoration: none; /* Убираем подчеркивание при наведении */
+    color: #847575;
+    text-decoration: none;
 }
 
-/* Цвет внешних ссылок в момент нажатия */
 .content a[href^="http"]:active {
-    color: #ff5722; /* Яркий оранжевый */
+    color: #393939;
 }
