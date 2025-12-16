@@ -16,7 +16,7 @@ body {
     padding: 0;
     line-height: 1.6;
 
-    background-image: url('../site/background.png'); 
+    background-image: url('site/background.png'); 
     background-repeat: repeat; 
     background-attachment: fixed;
     background-size: auto; 
