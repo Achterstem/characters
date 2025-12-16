@@ -29,7 +29,7 @@ body {
 
 /* Боковое меню */
 .sidebar {
-    width: 1000px;
+    width: 300px;
     background-color: rgba(37, 37, 38, 0.5);
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
