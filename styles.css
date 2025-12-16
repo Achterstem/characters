@@ -120,60 +120,71 @@ hr {
     margin: 30px 0;
 }
 
-/* Секция медалей: 3 в ряд */
+/* Секция медалей: Оформление как на картинке */
 .medals-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: flex-start; /* Начинаем слева */
+    gap: 0px; /* Убрали gap между медалями */
+    justify-content: flex-start;
+    padding: 10px 0; /* Небольшой отступ сверху/снизу */
 }
 
 .medal-card {
-    background-color: #2c2c2c;
-    padding: 15px;
-    border-radius: 6px;
-    width: calc(33.33% - 13.33px); /* 3 в ряд (20px gap / 3 = 6.66px * 2 = 13.33px) */
-    border: 1px solid var(--border-color);
+    /* Стили для имитации изображения: */
+    background: none; /* Убираем фон */
+    padding: 0px; /* Убираем внутренние отступы */
+    border: none; /* Убираем рамку */
+    margin: 0 5px; /* Небольшой внешний отступ между медалями */
+    
+    /* Сохраняем функциональность: */
     text-align: center;
-    cursor: pointer; /* Делаем кликабельным */
-    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    transition: transform 0.2s;
+    
+    /* Делаем блок компактным, чтобы картинки были рядом */
+    width: auto; 
+    max-width: 100px;
 }
 
 .medal-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px); /* Эффект при наведении */
+    /* Убираем сильную тень, чтобы не мешала общему стилю */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); 
 }
 
 .medal-icon {
-    width: 64px; /* Фиксированный размер для чистых картинок */
-    height: 64px;
+    /* Важно: размер зависит от ваших фактических картинок. 
+       Если они большие, уменьшите max-width и height. */
+    max-width: 100%; 
+    height: auto;
     display: block;
-    margin: 10px auto;
-    object-fit: contain; /* Сохраняет пропорции, не обрезая */
+    margin: 0; /* Убираем margin, чтобы были вплотную */
+    object-fit: contain; 
 }
 
-.medal-card h3 {
-    color: var(--text-accent);
-    margin-top: 0;
-    font-size: 1.1em;
+/* Скрываем текст под медалью, т.к. его видно в модальном окне */
+.medal-card h3,
+.medal-card p {
+    display: none; 
 }
 
-/* Стили для МОДАЛЬНОГО ОКНА */
+
+/* Стили для МОДАЛЬНОГО ОКНА (остаются прежними) */
 .modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed; /* Фиксированное положение */
-    z-index: 1000; /* Поверх всего */
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.85); /* Полупрозрачный темный фон */
+    background-color: rgba(0,0,0,0.85); 
 }
 
 .modal-content {
     background-color: var(--bg-light);
-    margin: 10% auto; /* Отступ сверху и по центру */
+    margin: 10% auto; 
     padding: 30px;
     border: 1px solid var(--border-color);
     width: 90%;
@@ -198,17 +209,12 @@ hr {
 
 .close-button:hover,
 .close-button:focus {
-    color: #ff4444; /* Красный при наведении */
+    color: #ff4444; 
     text-decoration: none;
     cursor: pointer;
 }
 
-/* Адаптивность */
-@media (max-width: 1200px) {
-    .medal-card {
-        width: calc(50% - 10px); /* 2 в ряд */
-    }
-}
+/* Адаптивность для узких экранов */
 @media (max-width: 800px) {
     .container {
         flex-direction: column;
@@ -222,6 +228,6 @@ hr {
         grid-template-columns: 1fr;
     }
     .medal-card {
-        width: 100%; /* 1 в ряд */
+        margin: 0 2px;
     }
 }
