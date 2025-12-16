@@ -231,3 +231,15 @@ hr {
         margin: 0 2px;
     }
 }
+
+/* Новый стиль для цепи имен под аватаркой */
+.chain-info {
+    padding: 10px 0 20px 0; /* Отступ */
+    border-bottom: 1px solid var(--border-color); /* Разделитель */
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.chain-info p {
+    margin: 0;
+}
