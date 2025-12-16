@@ -10,6 +10,7 @@
 /* Общие стили */
 body {
     font-family: Arial, sans-serif;
+    font-family: 'Pangolin', cursive;
     background-color: var(--bg-dark);
     color: var(--text-primary);
     margin: 0;
