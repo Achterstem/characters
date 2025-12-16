@@ -24,7 +24,7 @@ body {
 
 .container {
     display: flex;
-    min-height: 100vh;
+    min-height: 300vh;
 }
 
 /* Боковое меню */
