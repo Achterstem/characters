@@ -72,6 +72,7 @@ body {
 }
 
 .profile-card {
+    display: none;
     background-color: rgba(37, 37, 38, 0.5);
     padding: 30px;
     border-radius: 8px;
