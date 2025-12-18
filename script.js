@@ -57,14 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Кнопка Play/Pause
         playBtn.addEventListener('click', () => {
-        if (audio.paused) {
+    const iconPlay = playBtn.querySelector('.icon-play');
+    const iconPause = playBtn.querySelector('.icon-pause');
+
+    if (audio.paused) {
         audio.play();
-        playBtn.textContent = '⏸';
-        } else {
+        iconPlay.style.display = 'none';
+        iconPause.style.display = 'block';
+    } else {
         audio.pause();
-        playBtn.textContent = '▶';
-        }
-       });
+        iconPlay.style.display = 'block';
+        iconPause.style.display = 'none';
+    }
+});
 
         // Движение ползунка прогресса при проигрывании
         audio.addEventListener('timeupdate', () => {
