@@ -297,7 +297,7 @@ hr {
     /* Градиент для эффекта заполнения (будет обновляться через JS) */
     background-image: linear-gradient(red, red);
     background-repeat: no-repeat;
-    background-size: 50% 100%; /* Начальное значение заполнения */
+    background-size: 0% 100%; /* Начальное значение заполнения */
 }
 
 /* Прямоугольный узкий бегунок (Chrome, Safari, Edge) */
