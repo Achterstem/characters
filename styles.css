@@ -68,7 +68,7 @@ body {
 
 .sidebar a:hover, .sidebar .active a {
     background-color: #383838;
-    color: var(--text-accent);
+    color: #833131;
 }
 
 .profile-card {
@@ -257,7 +257,6 @@ hr {
     margin: 20px 0;
     display: flex;
     flex-direction: column;
-    gap: 2px;
 }
 
 /* Строка 1: OST + Громкость */
@@ -271,14 +270,13 @@ hr {
 .controls-row {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 5px;
 }
 
 /* Стили заголовка OST */
 .player-label {
     font-family: 'Oswald', sans-serif;
-    font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: #b6b6b6; /* Замените на цвет ваших h1/h2 */
     text-transform: uppercase;
 }
