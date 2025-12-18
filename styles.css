@@ -252,28 +252,64 @@ hr {
 
 /* Контейнер плеера */
 .custom-player {
-    width: 250px;
-    background: transparent;
-    color: inherit; /* Цвет текста персонажа */
-    font-family: 'Pangolin', sans-serif;
+    width: 100%;
+    max-width: 300px;
     margin: 20px 0;
+}
+
+/* СТРОКА 1: OST + Громкость */
+.player-row {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    align-items: center; /* Центрируем по вертикали */
+    gap: 15px;           /* Расстояние между текстом и ползунком */
+    margin-bottom: 8px;  /* Отступ от нижней строки */
 }
 
-.player-label {
-    font-size: 14px;
-    text-transform: uppercase;
-}
-
+/* СТРОКА 2: Кнопка + Прогресс */
 .controls-row {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-/* Кнопка: без фона, красная */
+/* Текст OST в стиле заголовков */
+.player-label {
+    font-family: 'Pangolin', sans-serif;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333; /* Цвет ваших h1/h2. Если в CSS есть другой цвет для них, укажите его здесь */
+    text-transform: uppercase;
+    white-space: nowrap; /* Чтобы текст не переносился */
+}
+
+/* Контейнер для ползунка громкости, чтобы он занимал всё свободное место */
+.volume-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* Прямоугольный бегунок и красное заполнение (из прошлых шагов) */
+.slider-red {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    background-image: linear-gradient(red, red);
+    background-repeat: no-repeat;
+    background-size: 50% 100%; /* Управляется через JS */
+    outline: none;
+}
+
+.slider-red::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 14px;
+    width: 4px;
+    background: red;
+    border-radius: 0;
+    cursor: pointer;
+}
+
 .play-btn {
     background: transparent;
     border: none;
@@ -282,46 +318,5 @@ hr {
     cursor: pointer;
     padding: 0;
     width: 25px;
-    text-align: left;
     outline: none;
-}
-
-/* Стилизация ползунков */
-.slider-red {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 2px; /* Толщина дорожки */
-    background: currentColor; /* Цвет неактивной части — под цвет текста */
-    outline: none;
-    cursor: pointer;
-    /* Градиент для эффекта заполнения (будет обновляться через JS) */
-    background-image: linear-gradient(red, red);
-    background-repeat: no-repeat;
-    background-size: 0% 100%; /* Начальное значение заполнения */
-}
-
-/* Прямоугольный узкий бегунок (Chrome, Safari, Edge) */
-.slider-red::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 14px;  /* Высота прямоугольника */
-    width: 4px;    /* Ширина (узкий) */
-    background: red;
-    cursor: pointer;
-    border-radius: 0; /* Делаем квадратным/прямоугольным */
-}
-
-/* Бегунок для Firefox */
-.slider-red::-moz-range-thumb {
-    height: 14px;
-    width: 4px;
-    background: red;
-    cursor: pointer;
-    border: none;
-    border-radius: 0;
-}
-
-/* Убираем стандартный фон дорожки в Firefox для кастомизации */
-.slider-red::-moz-range-track {
-    background: currentColor;
-    height: 2px;
 }
