@@ -252,75 +252,76 @@ hr {
 
 /* Контейнер плеера */
 .custom-player {
-    width: 100%;
-    max-width: 300px; /* Можно настроить под себя */
-    background: transparent; /* Без фона */
-    color: inherit; /* Цвет текста как у родителя */
+    width: 250px;
+    background: transparent;
+    color: inherit; /* Цвет текста персонажа */
     font-family: 'Pangolin', sans-serif;
-    margin-top: 20px;
-}
-
-.player-row {
+    margin: 20px 0;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    gap: 15px;
+    flex-direction: column;
+    gap: 5px;
 }
 
-/* Текст "OST" и мелкие подписи */
-.player-label, .icon-small {
+.player-label {
     font-size: 14px;
     text-transform: uppercase;
 }
 
-/* Кнопка Вкл/Выкл */
-.play-pause-btn {
-    background: none;
+.controls-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Кнопка: без фона, красная */
+.play-btn {
+    background: transparent;
     border: none;
-    color: red; /* Кнопка красная */
-    font-size: 20px;
+    color: red;
+    font-size: 22px;
     cursor: pointer;
     padding: 0;
-    line-height: 1;
-    width: 30px;
+    width: 25px;
+    text-align: left;
+    outline: none;
 }
 
-/* Общие стили для ползунков (Input Range) */
-input[type="range"] {
+/* Стилизация ползунков */
+.slider-red {
     -webkit-appearance: none;
-    background: transparent;
+    width: 100%;
+    height: 2px; /* Толщина дорожки */
+    background: currentColor; /* Цвет неактивной части — под цвет текста */
+    outline: none;
     cursor: pointer;
+    /* Градиент для эффекта заполнения (будет обновляться через JS) */
+    background-image: linear-gradient(red, red);
+    background-repeat: no-repeat;
+    background-size: 50% 100%; /* Начальное значение заполнения */
 }
 
-/* Дорожка ползунка (Progress Bar) - под цвет текста */
-input[type="range"]::-webkit-slider-runnable-track {
-    height: 2px;
-    background: currentColor; /* Использует текущий цвет текста */
-}
-
-/* Бегунок прогресса (тоже под цвет текста) */
-input[type="range"]::-webkit-slider-thumb {
+/* Прямоугольный узкий бегунок (Chrome, Safari, Edge) */
+.slider-red::-webkit-slider-thumb {
     -webkit-appearance: none;
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
+    height: 14px;  /* Высота прямоугольника */
+    width: 4px;    /* Ширина (узкий) */
+    background: red;
+    cursor: pointer;
+    border-radius: 0; /* Делаем квадратным/прямоугольным */
+}
+
+/* Бегунок для Firefox */
+.slider-red::-moz-range-thumb {
+    height: 14px;
+    width: 4px;
+    background: red;
+    cursor: pointer;
+    border: none;
+    border-radius: 0;
+}
+
+/* Убираем стандартный фон дорожки в Firefox для кастомизации */
+.slider-red::-moz-range-track {
     background: currentColor;
-    margin-top: -4px; /* Центрирование */
-}
-
-/* ОСОБЕННОСТЬ: Ползунок громкости КРАСНЫЙ */
-.volume-slider::-webkit-slider-runnable-track {
-    background: rgba(255, 0, 0, 0.3) !important; /* Полупрозрачный красный для дорожки */
-}
-.volume-slider::-webkit-slider-thumb {
-    background: red !important; /* Красный бегунок */
-}
-
-/* Для Firefox */
-.volume-slider { accent-color: red; }
-.progress-bar { accent-color: currentColor; }
-
-.content a[href^="http"]:active {
-    color: #393939;
+    height: 2px;
 }
