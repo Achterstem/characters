@@ -274,38 +274,35 @@ hr {
 }
 
 
-/* Контейнер плеера */
 .custom-player {
     width: 100%;
-    max-width: 200px; /* Общая ширина плеера */
+    max-width: 200px;
     margin: 20px 0;
     display: flex;
     flex-direction: column;
 }
 
-/* Строка 1: OST + Громкость */
+
 .player-row {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Расталкивает OST и громкость по краям */
+    justify-content: space-between;
 }
 
-/* Строка 2: Кнопка + Прогресс */
+
 .controls-row {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-/* Стили заголовка OST */
 .player-label {
     font-family: 'Oswald', sans-serif;
     font-size: 1.2em;
-    color: #b6b6b6; /* Замените на цвет ваших h1/h2 */
+    color: #b6b6b6;
     text-transform: uppercase;
 }
 
-/* КАСТОМНЫЕ ДОРОЖКИ (как на скриншоте) */
 .slider-custom {
     -webkit-appearance: none;
     appearance: none;
@@ -313,24 +310,20 @@ hr {
     background-color: #333;
     outline: none;
     cursor: pointer;
-    background-image: linear-gradient(#fff, #fff); /* Белая заливка */
+    background-image: linear-gradient(#fff, #fff);
     background-repeat: no-repeat;
-    background-size: 0% 100%; /* через JS */
+    background-size: 0% 100%;
 }
 
-/* Укорачиваем микшер громкости */
 .volume-slider {
-    width: 80px; /* Фиксированная короткая ширина */
+    width: 80px;
 }
 
-/* Прогресс-бар занимает всё оставшееся место во второй строке */
+
 .progress-bar {
     flex-grow: 1;
 }
 
-/* ПОЛНОЕ СКРЫТИЕ ПОЛЗУНКА (Thumb) */
-
-/* Для Chrome, Safari, Edge */
 .slider-custom::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -340,7 +333,7 @@ hr {
     border: none;
 }
 
-/* Для Firefox */
+
 .slider-custom::-moz-range-thumb {
     width: 0;
     height: 0;
@@ -348,13 +341,12 @@ hr {
     border: none;
 }
 
-/* Для Firefox (убираем встроенные границы) */
+
 .slider-custom::-moz-range-track {
     background: transparent;
     border: none;
 }
 
-/* Кнопка управления */
 .play-btn {
     background: transparent;
     border: none;
@@ -376,21 +368,20 @@ hr {
 
 .profile-header-row {
     display: flex;
-    justify-content: space-between; /* Заголовок влево, плеер вправо */
-    align-items: center;            /* Выравнивание по вертикальному центру */
-    gap: 20px;                      /* Расстояние между заголовком и плеером */
-    margin-bottom: 20px;            /* Отступ от остального текста */
-    flex-wrap: wrap;                /* Чтобы на узких экранах плеер переносился под заголовок */
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: -10px;
+    flex-wrap: wrap;
 }
 
 .profile-header-row h2 {
-    margin: 0;                      /* Убираем лишние отступы у заголовка */
+    margin: 0;
 }
 
-/* Настройка плеера внутри этой строки */
 .profile-header-row .custom-player {
-    margin: 0;                      /* Убираем внешние отступы, если они были */
-    width: 300px;                   /* Фиксируем ширину плеера, чтобы он не растягивался слишком сильно */
+    margin: 0;
+    width: 300px;
 }
 
 
@@ -414,7 +405,6 @@ hr {
 }
 
 .description-text {
-    /* Контейнер доходит до середины блока */
     width: 50%; 
     box-sizing: border-box;
     
@@ -423,7 +413,6 @@ hr {
     color: inherit;
 }
 
-/* Адаптивность для мобильных устройств */
 @media screen and (max-width: 768px) {
     .character-description-block {
         background-image: none !important; 
@@ -448,13 +437,12 @@ hr {
 
 .description-buttons {
     display: flex;
-    justify-content: flex-end; /* Выравнивание вправо */
-    gap: 15px;                 /* Расстояние между кнопками */
+    justify-content: flex-end;
+    gap: 15px;
     margin-top: 20px;
-    width: 100%;               /* Растягиваем на весь блок */
+    width: 100%;
 }
 
-/* Базовый стиль кнопок (подстройте под свои классы сайта) */
 .site-btn {
     padding: 10px 10px;
     cursor: pointer;
@@ -472,7 +460,7 @@ hr {
     color: #833131;
 }
 
-/* Стили блоков галерей */
+
 .gallery-container {
     margin-top: 15px;
     padding: 30px;
@@ -482,7 +470,7 @@ hr {
     text-align: center;
 }
 
-/* Мобильная версия: кнопки по центру */
+
 @media screen and (max-width: 768px) {
     .description-buttons {
         justify-content: center !important; 
@@ -498,7 +486,7 @@ hr {
     padding: 10px;
 }
 
-/* Стили миниатюры */
+
 .gallery-thumb {
     width: 100%;
     height: 120px;
@@ -512,7 +500,7 @@ hr {
     transform: scale(1.05);
 }
 
-/*  ОКНО ПРОСМОТРА */
+
 .image-viewer-modal {
     display: none; 
     position: fixed;
