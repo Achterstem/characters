@@ -1,109 +1,127 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.sidebar nav ul li a');
     const profileCards = document.querySelectorAll('.profile-card');
     const navItems = document.querySelectorAll('.sidebar nav ul li');
-    const medalCards = document.querySelectorAll('.medal-card');
-    const modal = document.getElementById('medalModal');
-    const closeButton = document.querySelector('.close-button');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalId = document.getElementById('modalId');
-    const modalDescription = document.getElementById('modalDescription');
+    const players = document.querySelectorAll('.custom-player');
 
-    if (modal) {
-        medalCards.forEach(card => {
-            card.addEventListener('click', () => {
-                modalTitle.textContent = card.dataset.title;
-                modalId.textContent = card.dataset.id;
-                modalDescription.textContent = card.dataset.description;
-                modal.style.display = 'block';
-            });
-        });
-
-        closeButton.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
+    // --- 1. ФУНКЦИЯ ОБНОВЛЕНИЯ ЦВЕТА ПОЛЗУНКОВ ---
+    function updateSliderFill(slider) {
+        const val = slider.value;
+        const min = slider.min || 0;
+        const max = slider.max || 100;
+        const percent = (val - min) * 100 / (max - min);
+        // Закрашиваем левую часть ползунка красным
+        slider.style.backgroundSize = percent + '% 100%';
     }
 
+    // --- 2. ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ПРОФИЛЕЙ + СТОП МУЗЫКА ---
     function showProfile(targetId) {
-        profileCards.forEach(card => {
-            card.style.display = 'none';
+        // Остановка всех аудио на странице
+        document.querySelectorAll('.audio-element').forEach(audio => {
+            audio.pause();
+        });
+        
+        // Сброс всех кнопок на "Play"
+        document.querySelectorAll('.play-btn').forEach(btn => {
+            btn.textContent = '▶';
+            btn.style.fontSize = '22px';
         });
 
+        // Скрываем все карточки и показываем нужную
+        profileCards.forEach(card => card.style.display = 'none');
         const targetProfile = document.querySelector(targetId);
         if (targetProfile) {
             targetProfile.style.display = 'block';
-            document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
+            // Прокрутка к контенту для мобильных устройств
+            if (window.innerWidth <= 768) {
+                document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
+            }
         }
         
-        navItems.forEach(item => {
-            item.classList.remove('active');
-        });
-
+        // Обновляем активный пункт в меню
+        navItems.forEach(item => item.classList.remove('active'));
         const activeLink = document.querySelector(`a[href="${targetId}"]`);
         if (activeLink) {
             activeLink.parentElement.classList.add('active');
         }
     }
 
-    const initialHash = window.location.hash || '#fraud';
-    showProfile(initialHash);
+    // --- 3. ИНИЦИАЛИЗАЦИЯ ПЛЕЕРОВ ---
+    players.forEach(player => {
+        const audio = player.querySelector('.audio-element');
+        const playBtn = player.querySelector('.play-btn');
+        const progress = player.querySelector('.progress-bar');
+        const volume = player.querySelector('.volume-slider');
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            
+        // Устанавливаем начальное закрашивание для громкости
+        if (volume) updateSliderFill(volume);
+
+        // Кнопка Play/Pause
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.textContent = '||'; // Символ паузы
+                playBtn.style.fontSize = '16px';
+            } else {
+                audio.pause();
+                playBtn.textContent = '▶';
+                playBtn.style.fontSize = '22px';
+            }
+        });
+
+        // Движение ползунка прогресса при проигрывании
+        audio.addEventListener('timeupdate', () => {
+            if (!audio.duration) return;
+            const val = (audio.currentTime / audio.duration) * 100;
+            progress.value = val;
+            updateSliderFill(progress);
+        });
+
+        // Перемотка
+        progress.addEventListener('input', () => {
+            audio.currentTime = (progress.value / 100) * audio.duration;
+            updateSliderFill(progress);
+        });
+
+        // Изменение громкости
+        volume.addEventListener('input', () => {
+            audio.volume = volume.value;
+            updateSliderFill(volume);
+        });
+    });
+
+    // --- 4. НАВИГАЦИЯ И МОДАЛЬНОЕ ОКНО ---
+    
+    // Переход по клику в меню
+    document.querySelectorAll('.sidebar nav ul li a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
             const targetId = link.getAttribute('href');
             showProfile(targetId);
-
             history.pushState(null, null, targetId);
         });
     });
-    
+
+    // Обработка кнопки "Назад" в браузере
     window.addEventListener('popstate', () => {
-        const hash = window.location.hash || '#molly';
-        showProfile(hash);
-    });
-});
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const audio = document.getElementById('character-audio');
-    const playBtn = document.getElementById('playBtn');
-    const progressBar = document.getElementById('progressBar');
-    const volumeSlider = document.querySelector('.volume-slider');
-
-    // Кнопка Play/Pause
-    playBtn.addEventListener('click', () => {
-        if (audio.paused) {
-            audio.play();
-            playBtn.textContent = '||'; // Знак паузы
-        } else {
-            audio.pause();
-            playBtn.textContent = '▶';
-        }
+        showProfile(window.location.hash || '#fraud');
     });
 
-    // Обновление прогресс-бара при проигрывании
-    audio.addEventListener('timeupdate', () => {
-        const progress = (audio.currentTime / audio.duration) * 100;
-        progressBar.value = progress || 0;
-    });
+    // Установка стартового профиля
+    showProfile(window.location.hash || '#fraud');
 
-    // Перемотка при клике на прогресс-бар
-    progressBar.addEventListener('input', () => {
-        const time = (progressBar.value / 100) * audio.duration;
-        audio.currentTime = time;
-    });
+    // Логика модального окна для медалей
+    const modal = document.getElementById('medalModal');
+    if (modal) {
+        document.querySelectorAll('.medal-card').forEach(card => {
+            card.addEventListener('click', () => {
+                document.getElementById('modalTitle').textContent = card.dataset.title;
+                document.getElementById('modalId').textContent = card.dataset.id;
+                document.getElementById('modalDescription').textContent = card.dataset.description;
+                modal.style.display = 'block';
+            });
+        });
 
-    // Регулировка громкости
-    volumeSlider.addEventListener('input', () => {
-        audio.volume = volumeSlider.value;
-    });
+        document.querySelector('.close-button').onclick = () => modal.style.display = 'none';
+        window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+    }
 });
