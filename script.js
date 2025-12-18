@@ -138,3 +138,18 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 });
+
+function openGallery(type) {
+    const refGallery = document.getElementById('gallery-reference');
+    const mainGallery = document.getElementById('gallery-main');
+
+    if (type === 'ref') {
+        // Переключаем видимость референсов и скрываем обычную галерею
+        refGallery.style.display = (refGallery.style.display === 'none') ? 'block' : 'none';
+        mainGallery.style.display = 'none';
+    } else {
+        // Переключаем видимость галереи и скрываем референсы
+        mainGallery.style.display = (mainGallery.style.display === 'none') ? 'block' : 'none';
+        refGallery.style.display = 'none';
+    }
+}
