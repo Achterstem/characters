@@ -285,7 +285,7 @@ hr {
 .slider-custom {
     -webkit-appearance: none;
     appearance: none;
-    height: 10px; 
+    height: 5px; 
     background-color: #333;
     outline: none;
     cursor: pointer;
