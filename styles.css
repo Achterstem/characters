@@ -253,7 +253,7 @@ hr {
 /* Контейнер плеера */
 .custom-player {
     width: 100%;
-    max-width: 300px; /* Общая ширина плеера */
+    max-width: 200px; /* Общая ширина плеера */
     margin: 20px 0;
     display: flex;
     flex-direction: column;
