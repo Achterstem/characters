@@ -276,7 +276,7 @@ hr {
 
 /* Стили заголовка OST */
 .player-label {
-    font-family: 'Pangolin', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: bold;
     font-size: 1.1em;
     color: #333; /* Замените на цвет ваших h1/h2 */
@@ -338,9 +338,16 @@ hr {
     background: transparent;
     border: none;
     color: red;
+    
+    width: 25px; 
+    height: 25px;
     font-size: 20px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     cursor: pointer;
     padding: 0;
-    width: 20px;
-    text-align: center;
+    outline: none;
 }
