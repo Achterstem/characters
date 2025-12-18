@@ -249,6 +249,78 @@ hr {
     text-decoration: none;
 }
 
+
+/* Контейнер плеера */
+.custom-player {
+    width: 100%;
+    max-width: 300px; /* Можно настроить под себя */
+    background: transparent; /* Без фона */
+    color: inherit; /* Цвет текста как у родителя */
+    font-family: 'Pangolin', sans-serif;
+    margin-top: 20px;
+}
+
+.player-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 15px;
+}
+
+/* Текст "OST" и мелкие подписи */
+.player-label, .icon-small {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+/* Кнопка Вкл/Выкл */
+.play-pause-btn {
+    background: none;
+    border: none;
+    color: red; /* Кнопка красная */
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    width: 30px;
+}
+
+/* Общие стили для ползунков (Input Range) */
+input[type="range"] {
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Дорожка ползунка (Progress Bar) - под цвет текста */
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 2px;
+    background: currentColor; /* Использует текущий цвет текста */
+}
+
+/* Бегунок прогресса (тоже под цвет текста) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background: currentColor;
+    margin-top: -4px; /* Центрирование */
+}
+
+/* ОСОБЕННОСТЬ: Ползунок громкости КРАСНЫЙ */
+.volume-slider::-webkit-slider-runnable-track {
+    background: rgba(255, 0, 0, 0.3) !important; /* Полупрозрачный красный для дорожки */
+}
+.volume-slider::-webkit-slider-thumb {
+    background: red !important; /* Красный бегунок */
+}
+
+/* Для Firefox */
+.volume-slider { accent-color: red; }
+.progress-bar { accent-color: currentColor; }
+
 .content a[href^="http"]:active {
     color: #393939;
 }
