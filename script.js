@@ -153,3 +153,33 @@ function openGallery(type) {
         refGallery.style.display = 'none';
     }
 }
+
+// Логика просмотра картинок
+const imageModal = document.getElementById('imageModal');
+const fullImage = document.getElementById('fullScreenImage');
+const closeViewer = document.querySelector('.close-viewer');
+
+if (imageModal) imageModal.style.display = 'none';
+
+document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+        fullImage.src = thumb.src;
+        imageModal.style.display = 'flex';
+    });
+});
+
+// Закрытие по клику на крестик
+if (closeViewer) {
+    closeViewer.onclick = () => {
+        imageModal.style.display = 'none';
+    };
+}
+
+// Закрытие по клику на темный фон вне картинки
+if (imageModal) {
+    imageModal.onclick = (e) => {
+        if (e.target === imageModal) {
+            imageModal.style.display = 'none';
+        }
+    };
+}
