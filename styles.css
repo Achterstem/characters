@@ -368,3 +368,47 @@ hr {
     margin: 0;                      /* Убираем внешние отступы, если они были */
     width: 300px;                   /* Фиксируем ширину плеера, чтобы он не растягивался слишком сильно */
 }
+
+
+
+
+.character-description-block {
+    position: relative;
+    width: 100%;
+    min-height: 250px;
+    margin-top: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+
+    background-image: url('site/bg-fraud.png');
+    background-repeat: no-repeat;
+    background-size: contain; 
+    
+    background-position: calc(100% - 5px) center; 
+    
+    background-color: transparent; 
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.description-text {
+    /* Контейнер доходит до середины блока */
+    width: 50%; 
+    box-sizing: border-box;
+    
+    font-size: 1rem;
+    line-height: 1.6;
+    color: inherit;
+}
+
+/* Адаптивность для мобильных устройств */
+@media screen and (max-width: 768px) {
+    .character-description-block {
+        background-position: center bottom; /* На мобилках лучше сместить картинку вниз */
+        background-size: 50%; /* Уменьшить картинку */
+    }
+    .description-text {
+        width: 100%; /* Текст на всю ширину на маленьких экранах */
+        margin-bottom: 150px; /* Отступ снизу, чтобы текст не лежал на картинке */
+    }
+}
