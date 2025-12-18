@@ -432,18 +432,20 @@ hr {
 
 /* Базовый стиль кнопок (подстройте под свои классы сайта) */
 .site-btn {
-    padding: 10px 20px;
+    padding: 10px 10px;
     cursor: pointer;
-    background-color: #333; /* Пример цвета */
-    color: white;
+    background-color: transparent;
+    color: #b6b6b6;
     border: none;
     border-radius: 4px;
-    font-family: 'Pangolin', sans-serif;
+    font-size: 1.4em;
+    font-family: 'Oswald', sans-serif;
     transition: background 0.3s;
 }
 
 .site-btn:hover {
-    background-color: red; /* Эффект при наведении */
+    background-color: transparent !important;
+    color: #833131;
 }
 
 /* Стили блоков галерей */
