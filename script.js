@@ -70,3 +70,40 @@ document.addEventListener('DOMContentLoaded', () => {
         showProfile(hash);
     });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('character-audio');
+    const playBtn = document.getElementById('playBtn');
+    const progressBar = document.getElementById('progressBar');
+    const volumeSlider = document.querySelector('.volume-slider');
+
+    // Кнопка Play/Pause
+    playBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            playBtn.textContent = '||'; // Знак паузы
+        } else {
+            audio.pause();
+            playBtn.textContent = '▶';
+        }
+    });
+
+    // Обновление прогресс-бара при проигрывании
+    audio.addEventListener('timeupdate', () => {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.value = progress || 0;
+    });
+
+    // Перемотка при клике на прогресс-бар
+    progressBar.addEventListener('input', () => {
+        const time = (progressBar.value / 100) * audio.duration;
+        audio.currentTime = time;
+    });
+
+    // Регулировка громкости
+    volumeSlider.addEventListener('input', () => {
+        audio.volume = volumeSlider.value;
+    });
+});
