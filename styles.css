@@ -402,11 +402,14 @@ hr {
 /* Адаптивность для мобильных устройств */
 @media screen and (max-width: 768px) {
     .character-description-block {
-        background-position: center bottom; /* На мобилках лучше сместить картинку вниз */
-        background-size: 50%; /* Уменьшить картинку */
+        background-image: none; 
+        min-height: auto; 
+        padding: 10px 0;
     }
+
     .description-text {
-        width: 100%; /* Текст на всю ширину на маленьких экранах */
-        margin-bottom: 150px; /* Отступ снизу, чтобы текст не лежал на картинке */
+        width: 100%; 
+        text-align: left; 
+        margin: 0; 
     }
 }
