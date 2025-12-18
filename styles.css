@@ -336,7 +336,7 @@ hr {
 .play-btn {
     background: transparent;
     border: none;
-    color: red; /* Цвет SVG возьмется отсюда благодаря fill="currentColor" */
+    color: #833131;
     cursor: pointer;
     padding: 0;
     width: 24px;
