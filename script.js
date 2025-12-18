@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         playBtn.addEventListener('click', () => {
         if (audio.paused) {
         audio.play();
-        playBtn.textContent = '▐▐';
+        playBtn.textContent = '⏸';
         } else {
         audio.pause();
         playBtn.textContent = '▶';
