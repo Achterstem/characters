@@ -420,3 +420,46 @@ hr {
         gap: 10px;
     }
 }
+
+
+.description-buttons {
+    display: flex;
+    justify-content: flex-end; /* Выравнивание вправо */
+    gap: 15px;                 /* Расстояние между кнопками */
+    margin-top: 20px;
+    width: 100%;               /* Растягиваем на весь блок */
+}
+
+/* Базовый стиль кнопок (подстройте под свои классы сайта) */
+.site-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #333; /* Пример цвета */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Pangolin', sans-serif;
+    transition: background 0.3s;
+}
+
+.site-btn:hover {
+    background-color: red; /* Эффект при наведении */
+}
+
+/* Стили блоков галерей */
+.gallery-container {
+    margin-top: 15px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.05); /* Легкий фон для блока картинок */
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Мобильная версия: кнопки по центру */
+@media screen and (max-width: 768px) {
+    .description-buttons {
+        justify-content: center !important; 
+        margin-top: 10px !important;
+    }
+}
