@@ -452,8 +452,8 @@ hr {
 .gallery-container {
     margin-top: 15px;
     padding: 30px;
-    background: rgba(0, 0, 0, 0.05); /* Легкий фон для блока картинок */
-    border: 1px dashed #ccc;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid #2a2a2a;
     border-radius: 8px;
     text-align: center;
 }
