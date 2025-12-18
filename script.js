@@ -1,43 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. ПЕРЕМЕННЫЕ И ПОИСК ЭЛЕМЕНТОВ ---
     const profileCards = document.querySelectorAll('.profile-card');
     const navItems = document.querySelectorAll('.sidebar nav ul li');
     const players = document.querySelectorAll('.custom-player');
 
-    // --- 1. ФУНКЦИЯ ОБНОВЛЕНИЯ ЦВЕТА ПОЛЗУНКОВ ---
+    // --- 2. ВНУТРЕННИЕ ФУНКЦИИ ---
+
+    // Функция для закрашивания дорожек (белый цвет слева)
     function updateSliderFill(slider) {
+        if (!slider) return;
         const val = slider.value;
         const min = slider.min || 0;
         const max = slider.max || 100;
         const percent = (val - min) * 100 / (max - min);
-        // Закрашиваем левую часть ползунка красным
         slider.style.backgroundSize = percent + '% 100%';
     }
 
-    // --- 2. ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ПРОФИЛЕЙ + СТОП МУЗЫКА ---
+    // Функция переключения профилей
     function showProfile(targetId) {
-        // Остановка всех аудио на странице
+        // Останавливаем все аудио при переключении вкладки
         document.querySelectorAll('.audio-element').forEach(audio => {
             audio.pause();
         });
-        
-        // Сброс всех кнопок на "Play"
-        document.querySelectorAll('.play-btn').forEach(btn => {
-            btn.textContent = '▶';
-            btn.style.fontSize = '22px';
-        });
 
-        // Скрываем все карточки и показываем нужную
+        // Сбрасываем все иконки на Play
+        document.querySelectorAll('.icon-play').forEach(i => i.style.display = 'block');
+        document.querySelectorAll('.icon-pause').forEach(i => i.style.display = 'none');
+
+        // Скрываем все карточки, показываем целевую
         profileCards.forEach(card => card.style.display = 'none');
         const targetProfile = document.querySelector(targetId);
         if (targetProfile) {
             targetProfile.style.display = 'block';
-            // Прокрутка к контенту для мобильных устройств
+            // Плавный скролл к контенту на мобилках
             if (window.innerWidth <= 768) {
                 document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
             }
         }
         
-        // Обновляем активный пункт в меню
+        // Обновляем активный пункт меню
         navItems.forEach(item => item.classList.remove('active'));
         const activeLink = document.querySelector(`a[href="${targetId}"]`);
         if (activeLink) {
@@ -51,27 +52,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const playBtn = player.querySelector('.play-btn');
         const progress = player.querySelector('.progress-bar');
         const volume = player.querySelector('.volume-slider');
+        const iconPlay = playBtn.querySelector('.icon-play');
+        const iconPause = playBtn.querySelector('.icon-pause');
 
-        // Устанавливаем начальное закрашивание для громкости
-        if (volume) updateSliderFill(volume);
+        // Установка громкости по умолчанию и закрашивание
+        if (volume) {
+            audio.volume = volume.value;
+            updateSliderFill(volume);
+        }
 
-        // Кнопка Play/Pause
+        // Логика кнопки Play/Pause (SVG)
         playBtn.addEventListener('click', () => {
-    const iconPlay = playBtn.querySelector('.icon-play');
-    const iconPause = playBtn.querySelector('.icon-pause');
+            if (audio.paused) {
+                audio.play();
+                iconPlay.style.display = 'none';
+                iconPause.style.display = 'block';
+            } else {
+                audio.pause();
+                iconPlay.style.display = 'block';
+                iconPause.style.display = 'none';
+            }
+        });
 
-    if (audio.paused) {
-        audio.play();
-        iconPlay.style.display = 'none';
-        iconPause.style.display = 'block';
-    } else {
-        audio.pause();
-        iconPlay.style.display = 'block';
-        iconPause.style.display = 'none';
-    }
-});
-
-        // Движение ползунка прогресса при проигрывании
+        // Обновление дорожки прогресса во время игры
         audio.addEventListener('timeupdate', () => {
             if (!audio.duration) return;
             const val = (audio.currentTime / audio.duration) * 100;
@@ -79,22 +82,20 @@ document.addEventListener('DOMContentLoaded', () => {
             updateSliderFill(progress);
         });
 
-        // Перемотка
+        // Ручная перемотка
         progress.addEventListener('input', () => {
             audio.currentTime = (progress.value / 100) * audio.duration;
             updateSliderFill(progress);
         });
 
-        // Изменение громкости
+        // Регулировка громкости
         volume.addEventListener('input', () => {
             audio.volume = volume.value;
             updateSliderFill(volume);
         });
     });
 
-    // --- 4. НАВИГАЦИЯ И МОДАЛЬНОЕ ОКНО ---
-    
-    // Переход по клику в меню
+    // --- 4. НАВИГАЦИЯ ---
     document.querySelectorAll('.sidebar nav ul li a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -104,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Обработка кнопки "Назад" в браузере
     window.addEventListener('popstate', () => {
         showProfile(window.location.hash || '#fraud');
     });
@@ -112,19 +112,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Установка стартового профиля
     showProfile(window.location.hash || '#fraud');
 
-    // Логика модального окна для медалей
+    // --- 5. МОДАЛЬНОЕ ОКНО (МЕДАЛИ) ---
     const modal = document.getElementById('medalModal');
     if (modal) {
+        const modalTitle = document.getElementById('modalTitle');
+        const modalId = document.getElementById('modalId');
+        const modalDescription = document.getElementById('modalDescription');
+        const closeButton = document.querySelector('.close-button');
+
         document.querySelectorAll('.medal-card').forEach(card => {
             card.addEventListener('click', () => {
-                document.getElementById('modalTitle').textContent = card.dataset.title;
-                document.getElementById('modalId').textContent = card.dataset.id;
-                document.getElementById('modalDescription').textContent = card.dataset.description;
+                modalTitle.textContent = card.dataset.title;
+                modalId.textContent = card.dataset.id;
+                modalDescription.textContent = card.dataset.description;
                 modal.style.display = 'block';
             });
         });
 
-        document.querySelector('.close-button').onclick = () => modal.style.display = 'none';
-        window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+        if (closeButton) {
+            closeButton.onclick = () => modal.style.display = 'none';
+        }
+
+        window.onclick = (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        };
     }
 });
