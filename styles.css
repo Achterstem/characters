@@ -402,14 +402,21 @@ hr {
 /* Адаптивность для мобильных устройств */
 @media screen and (max-width: 768px) {
     .character-description-block {
-        background-image: none; 
-        min-height: auto; 
-        padding: 10px 0;
+        background-image: none !important; 
+        min-height: 0 !important;
+        padding: 10px !important;
+        border: none !important;
     }
 
     .description-text {
-        width: 100%; 
-        text-align: left; 
-        margin: 0; 
+        width: 100% !important; 
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .profile-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
 }
