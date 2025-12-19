@@ -4,6 +4,7 @@
     --text-primary: #7c7c7c;
     --text-accent: #bebebe;
     --border-color: #383838;
+    --hover-color: #833131;
 }
 
 body {
@@ -459,7 +460,7 @@ hr {
 
 .site-btn:hover {
     background-color: transparent !important;
-    color: #833131;
+    color: var(--hover-color);
 }
 
 
