@@ -116,33 +116,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const imageModal = document.getElementById('imageModal');
-const fullImage = document.getElementById('fullScreenImage');
-const closeBtn = document.querySelector('.close-modal');
+    const fullImage = document.getElementById('fullScreenImage');
+    const closeViewer = document.querySelector('.close-viewer');
+    
+    if (imageModal) {
+    imageModal.style.display = 'none'; 
 
-// Делегирование: слушаем клики по всему документу
-document.addEventListener('click', function(e) {
-    // Если кликнули по картинке с классом gallery-thumb
-    if (e.target.classList.contains('gallery-thumb')) {
-        fullImage.src = e.target.src; // Берем путь из миниатюры
-        imageModal.style.display = 'flex'; // Показываем окно
-        document.body.style.overflow = 'hidden'; // Запрещаем скролл сайта под окном
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('gallery-thumb')) {
+            fullImage.src = e.target.src;
+            imageModal.style.display = 'flex'; 
+        }
+    });
+
+    if (closeViewer) {
+        closeViewer.onclick = () => {
+            imageModal.style.display = 'none';
+        };
     }
-});
 
-// Закрытие при клике на крестик
-if (closeBtn) {
-    closeBtn.onclick = () => closeModal();
-}
-
-// Закрытие при клике на темный фон
-imageModal.onclick = (e) => {
-    if (e.target === imageModal) closeModal();
-};
-
-function closeModal() {
-    imageModal.style.display = 'none';
-    document.body.style.overflow = ''; // Возвращаем скролл
-}
+    imageModal.onclick = (e) => {
+        if (e.target === imageModal) {
+            imageModal.style.display = 'none';
+        }
+    };
 }
 
     const medalModal = document.getElementById('medalModal');
