@@ -94,68 +94,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showProfile(window.location.hash || '#fraud');
 
-    const modal = document.getElementById('medalModal');
-    if (modal) {
+    profileCards.forEach(card => {
+        const btnRef = card.querySelector('.btn-ref');
+        const btnGal = card.querySelector('.btn-gal');
+        const refGal = card.querySelector('.ref-gallery');
+        const mainGal = card.querySelector('.main-gallery');
+
+        if (btnRef && refGal) {
+            btnRef.addEventListener('click', () => {
+                refGal.style.display = (refGal.style.display === 'none') ? 'block' : 'none';
+                if (mainGal) mainGal.style.display = 'none';
+            });
+        }
+
+        if (btnGal && mainGal) {
+            btnGal.addEventListener('click', () => {
+                mainGal.style.display = (mainGal.style.display === 'none') ? 'block' : 'none';
+                if (refGal) refGal.style.display = 'none';
+            });
+        }
+    });
+
+    const imageModal = document.getElementById('imageModal');
+    const fullImage = document.getElementById('fullScreenImage');
+    const closeViewer = document.querySelector('.close-viewer');
+
+    if (imageModal) {
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('gallery-thumb')) {
+                fullImage.src = e.target.src;
+                imageModal.style.display = 'flex';
+            }
+        });
+
+        if (closeViewer) {
+            closeViewer.onclick = () => imageModal.style.display = 'none';
+        }
+
+        imageModal.onclick = (e) => {
+            if (e.target === imageModal) imageModal.style.display = 'none';
+        };
+    }
+
+    const medalModal = document.getElementById('medalModal');
+    if (medalModal) {
         const modalTitle = document.getElementById('modalTitle');
         const modalId = document.getElementById('modalId');
         const modalDescription = document.getElementById('modalDescription');
-        const closeButton = document.querySelector('.close-button');
+        const closeMedal = document.querySelector('.close-button');
 
         document.querySelectorAll('.medal-card').forEach(card => {
             card.addEventListener('click', () => {
                 modalTitle.textContent = card.dataset.title;
                 modalId.textContent = card.dataset.id;
                 modalDescription.textContent = card.dataset.description;
-                modal.style.display = 'block';
+                medalModal.style.display = 'block';
             });
         });
 
-        if (closeButton) {
-            closeButton.onclick = () => modal.style.display = 'none';
+        if (closeMedal) {
+            closeMedal.onclick = () => medalModal.style.display = 'none';
         }
 
         window.onclick = (e) => {
-            if (e.target === modal) modal.style.display = 'none';
+            if (e.target === medalModal) medalModal.style.display = 'none';
         };
     }
 });
-
-function openGallery(type) {
-    const refGallery = document.getElementById('gallery-reference');
-    const mainGallery = document.getElementById('gallery-main');
-
-    if (type === 'ref') {
-        refGallery.style.display = (refGallery.style.display === 'none') ? 'block' : 'none';
-        mainGallery.style.display = 'none';
-    } else {
-        mainGallery.style.display = (mainGallery.style.display === 'none') ? 'block' : 'none';
-        refGallery.style.display = 'none';
-    }
-}
-
-const imageModal = document.getElementById('imageModal');
-const fullImage = document.getElementById('fullScreenImage');
-const closeViewer = document.querySelector('.close-viewer');
-
-if (imageModal) imageModal.style.display = 'none';
-
-document.querySelectorAll('.gallery-thumb').forEach(thumb => {
-    thumb.addEventListener('click', () => {
-        fullImage.src = thumb.src;
-        imageModal.style.display = 'flex';
-    });
-});
-
-if (closeViewer) {
-    closeViewer.onclick = () => {
-        imageModal.style.display = 'none';
-    };
-}
-
-if (imageModal) {
-    imageModal.onclick = (e) => {
-        if (e.target === imageModal) {
-            imageModal.style.display = 'none';
-        }
-    };
-}
