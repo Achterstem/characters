@@ -494,7 +494,7 @@ hr {
 
 
 .image-viewer-modal {
-    display: none !important; 
+    display: none; 
     position: fixed;
     z-index: 2000;
     left: 0;
