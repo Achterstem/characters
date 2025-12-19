@@ -143,6 +143,7 @@ function closeModal() {
     imageModal.style.display = 'none';
     document.body.style.overflow = ''; // Возвращаем скролл
 }
+}
 
     const medalModal = document.getElementById('medalModal');
     if (medalModal) {
