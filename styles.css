@@ -432,6 +432,7 @@ hr {
     justify-content: flex-end;
     gap: 15px;
     margin-top: 20px;
+    margin-right: 5px;
     width: 100%;
 }
 
