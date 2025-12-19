@@ -118,23 +118,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const imageModal = document.getElementById('imageModal');
     const fullImage = document.getElementById('fullScreenImage');
     const closeViewer = document.querySelector('.close-viewer');
-
+    
     if (imageModal) {
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('gallery-thumb')) {
-                fullImage.src = e.target.src;
-                imageModal.style.display = 'flex';
-            }
-        });
+    imageModal.style.display = 'none'; 
 
-        if (closeViewer) {
-            closeViewer.onclick = () => imageModal.style.display = 'none';
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('gallery-thumb')) {
+            fullImage.src = e.target.src;
+            imageModal.style.display = 'flex'; 
         }
+    });
 
-        imageModal.onclick = (e) => {
-            if (e.target === imageModal) imageModal.style.display = 'none';
+    if (closeViewer) {
+        closeViewer.onclick = () => {
+            imageModal.style.display = 'none';
         };
     }
+
+    imageModal.onclick = (e) => {
+        if (e.target === imageModal) {
+            imageModal.style.display = 'none';
+        }
+    };
+}
 
     const medalModal = document.getElementById('medalModal');
     if (medalModal) {
