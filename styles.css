@@ -4,6 +4,7 @@
     --text-primary: #7c7c7c;
     --text-accent: #bebebe;
     --border-color: #383838;
+    --hover-color: #833131;
 }
 
 body {
@@ -449,7 +450,7 @@ hr {
     padding: 10px 10px;
     cursor: pointer;
     background-color: transparent;
-    --hover-color: #833131;
+    color: #b6b6b6;
     border: none;
     border-radius: 4px;
     font-size: 1.4em;
