@@ -436,6 +436,15 @@ hr {
     width: 100%;
 }
 
+.btn-separator {
+    font-size: 1.4em; 
+    color: #696969;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    cursor: default;
+}
+
 .site-btn {
     padding: 10px 10px;
     cursor: pointer;
