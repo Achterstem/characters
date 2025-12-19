@@ -535,3 +535,20 @@ hr {
     font-weight: bold;
     cursor: pointer;
 }
+
+.footer-credits {
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  
+  font-size: clamp(10px, 1.5vw, 16px); 
+  
+  padding: 20px;/
+}
+
+@media (max-width: 480px) {
+  .footer-credits {
+    font-size: 8px;
+    text-align: center;
+  }
+}
