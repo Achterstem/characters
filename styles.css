@@ -432,7 +432,7 @@ hr {
     justify-content: flex-end;
     gap: 15px;
     margin-top: 20px;
-    margin-right: 5px;
+    transform: translateX(-20px);
     width: 100%;
 }
 
@@ -467,7 +467,7 @@ hr {
 @media screen and (max-width: 768px) {
     .description-buttons {
         justify-content: center !important; 
-        margin-right: 0 !important;
+        transform: translateX(0) !important;
         margin-top: 10px !important;
     }
 }
