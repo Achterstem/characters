@@ -467,6 +467,7 @@ hr {
 @media screen and (max-width: 768px) {
     .description-buttons {
         justify-content: center !important; 
+        margin-right: 0 !important;
         margin-top: 10px !important;
     }
 }
